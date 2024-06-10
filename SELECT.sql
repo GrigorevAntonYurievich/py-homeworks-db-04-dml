@@ -5,7 +5,7 @@
  
 -- Название треков, продолжительность которых не менее 3,5 минут.
  SELECT nametrek, dlitel from traks
- where dlitel >=3.5; 
+ where dlitel >='00:03:30'; 
 
 -- Названия сборников, вышедших в период с 2018 по 2020 год включительно.
  select sbornik_name, data_relis  from sborniki
@@ -16,15 +16,14 @@
  where nameisp not like '% %';
 
 --Название треков, которые содержат слово «мой» или «my».
- select nametrek from traks 
- where nametrek like '%my%' or nametrek like '%мой%';
+ SELECT name FROM music_tracks WHERE name iLIKE '%my%';
 
 -- Количество исполнителей в каждом жанре.
 SELECT jzanr.hazjz, count(ispolniteli.nameisp) AS singers_in_genre FROM jzanr
 JOIN artist_genres ON jzanr.idjz = artist_genres.ispid
 JOIN ispolniteli ON artist_genres.ispid = ispolniteli.ispid
 GROUP BY jzanr.hazjz
-ORDER BY count(ispid) DESC;
+ORDER BY count(ispolniteli.ispid) DESC;
 
 --Количество треков, вошедших в альбомы 2019–2020 годов.
 SELECT alboms.namealb AS alobom, alboms.godvps, count(traks.nametrek) AS traks_is_albums FROM alboms
