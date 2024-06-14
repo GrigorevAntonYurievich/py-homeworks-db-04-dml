@@ -14,10 +14,17 @@
 -- Исполнители, чьё имя состоит из одного слова.
  select nameisp from ispolniteli
  where nameisp not like '% %';
-
+ 
 --Название треков, которые содержат слово «мой» или «my».
- SELECT name FROM music_tracks WHERE name iLIKE '%my%';
-
+SELECT nametrek 
+FROM traks 
+WHERE nametrek iLIKE '% my %' 
+   OR nametrek iLIKE 'my %' 
+   OR nametrek iLIKE '% my' 
+   OR nametrek iLIKE '% мой %' 
+   OR nametrek iLIKE 'мой %' 
+   OR nametrek iLIKE '% мой';
+  
 -- Количество исполнителей в каждом жанре.
 SELECT jzanr.hazjz, count(ispolniteli.nameisp) AS singers_in_genre FROM jzanr
 JOIN artist_genres ON jzanr.idjz = artist_genres.ispid
@@ -26,10 +33,10 @@ GROUP BY jzanr.hazjz
 ORDER BY count(ispolniteli.ispid) DESC;
 
 --Количество треков, вошедших в альбомы 2019–2020 годов.
-SELECT alboms.namealb AS alobom, alboms.godvps, count(traks.nametrek) AS traks_is_albums FROM alboms
+SELECT COUNT(traks.nametrek) AS total_traks 
+FROM alboms
 JOIN traks ON traks.alid = alboms.alid
-GROUP BY alboms.namealb, alboms.godvps
-HAVING alboms.godvps BETWEEN '2019' AND '2020';
+WHERE alboms.godvps BETWEEN '2019' AND '2020';
 
 --Средняя продолжительность треков по каждому альбому.
 SELECT alboms.namealb AS aloboms, avg(traks.dlitel) AS average_songs_duration FROM alboms
@@ -55,4 +62,3 @@ ORDER BY avg(traks.dlitel);
  LEFT JOIN ispolniteli ON artist_albums.ispid = ispolniteli.ispid
  WHERE ispolniteli.ispid = 2
  GROUP BY ispolniteli.nameisp, sborniki.sbornik_name;
-

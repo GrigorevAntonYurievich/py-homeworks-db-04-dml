@@ -25,60 +25,57 @@ VALUES
 -- заполнение данными таблицы traks
 INSERT INTO traks (nametrek, alid, dlitel)
 VALUES 
-('Yellow', '1', '4:25'),
-('Bad Guy', '2', '3:02'),
-('Gods Plan', '3', '3:32'),
-('Radioactive', '1', '4:16'),
-('Ocean Eyes', '2', '3:52'),
-('In my feeling', '3', '2:11'),
-('myself', '2', '1:25'),
-('by myself', '2', '1:24'),
-('bemy self', '2', '1:23'),
-('myself by', '2', '1:22'),
-('by myself by', '2', '1:21'),
-('beemy', '2', '1:20'),
-('premyne', '2', '1:26');
+('Yellow', '1', '00:04:25'),
+('Bad Guy', '2', '00:03:02'),
+('Gods Plan', '3', '00:03:32'),
+('Radioactive', '1', '00:04:16'),
+('Ocean Eyes', '2', '00:03:52'),
+('In my feeling', '3', '00:02:11'),
+('myself', '2', '00:01:25'),
+('by myself', '2', '00:01:24'),
+('bemy self', '2', '00:01:23'),
+('myself by', '2', '00:01:22'),
+('by myself by', '2', '00:01:21'),
+('beemy', '2', '00:01:20'),
+('premyne', '2', '00:01:26');
 
 -- заполнение данными таблицы sbornik
 INSERT INTO sborniki (sbornik_name, data_relis)
 VALUES 
-('Top Rock Hits', '2018');
-('Pop Essential', '2019');
-('Hip-Hop Vibes', '2020');
+('Top Rock Hits', '2018'),
+('Pop Essential', '2019'),
+('Hip-Hop Vibes', '2020'),
 ('Mixed Favorites', '2017');
 
 -- заполнение данными таблицы compilation_tracks
-INSERT INTO compilation_tracks (trekid , sbornik_id)
+INSERT INTO compilation_tracks (sbornik_id, trekid)
 VALUES
-(1,1);
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(2,5),
+(3,6),
+(2,7),
+(2,8),
+(2,9),
+(2,10),
+(4,11),
+(4,12),
+(4,13);
 
-INSERT INTO compilation_tracks (trekid , sbornik_id)
-VALUES
-(generate_series(2, 10),generate_series(2, 10));
-
-
-INSERT INTO compilation_tracks (trekid, sbornik_id)
+-- заполнение данными таблицы Artist_Genres
+INSERT INTO Artist_Genres (ispid, idjz)
 VALUES 
-(generate_series(11, 20, generate_series(1, 10));
+(1,1),
+(2,2),
+(3,3),
+(4,1);
 
 -- заполнение данными таблицы artist_albums
-INSERT INTO artist_albums (ispid, alid)
+INSERT INTO Artist_Albums (ispid, alid)
 VALUES 
-(generate_series(1, 10), generate_series(1, 10));
-
-INSERT INTO artist_albums (ispid, alid)
-VALUES 
-(generate_series(3, 6), generate_series(7, 10));
-
--- заполнение данными таблицы artist_genre
-INSERT INTO artist_genre (ispid, idjz)
-VALUES 
-(generate_series(1, 10), generate_series(1, 10));
-
-INSERT INTO artist_genre (ispid, idjz)
-VALUES 
-(generate_series(2, 5), generate_series(6, 9));
-
-
-
-
+(1,1),
+(4,1),
+(2,2),
+(3,3);
